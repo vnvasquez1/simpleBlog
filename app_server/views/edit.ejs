@@ -1,0 +1,4 @@
+<%=article.title%>
+<form action="/<%=article._id%>?_method=PUT" method="POST" >
+<input type="text"  name="text" value="<%=article.text%>" />
+<input type="submit" value="UPDATE" /> </form>

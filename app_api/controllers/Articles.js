@@ -26,3 +26,38 @@ module.exports.getArticles=function(req,res){
     });
 
 }
+
+module.exports.getArticle=function(req,res){
+  Article
+    .findById(req.params.articleId,function(err,result){
+       if(err){
+         console.log("err",err);
+       }else{
+         res.json(result);
+       }
+    });
+}
+
+
+module.exports.updateArticle=function(req,res){
+  Article
+    .findByIdAndUpdate(req.params.articleId,req.body,function(err,result){
+       if(err){
+         console.log(err);
+       }else{
+         res.json(result);
+       }
+    });
+}
+
+
+module.exports.deleteArticle=function(req,res){
+  Article
+    .findByIdAndRemove(req.params.articleId,function(err,result){
+       if(err){
+         console.log(err);
+       }else{
+         res.json(result);
+       }
+    });
+}
