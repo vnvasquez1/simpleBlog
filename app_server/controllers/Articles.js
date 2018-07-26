@@ -12,7 +12,6 @@ module.exports.postArticle=function(req,res){
      json:req.body,
      method:"POST"   } 
 
-console.log("req.body",req.body);
    request(requestOptions,function(error,response,body){
         res.redirect("/");
 
@@ -26,10 +25,8 @@ module.exports.getArticles=function(req,res){
      method:"GET"   } 
 
 
-   request(requestOptions,function(error,response,body){
-        res.render("index",{articles:body});
-
-   });
+   request(requestOptions,(error,response,body)=>{res.render("index",{articles:body});}
+   );
 }
 
 module.exports.getArticle=function(req,res){

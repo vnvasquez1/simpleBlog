@@ -1,10 +1,10 @@
-var express=require('express'),
-bodyParser =require('body-parser'),
+var express   =require('express'),
+bodyParser    =require('body-parser'),
 methodOverride=require('method-override'),
-path       =require('path'),
-routesApi  =require('./app_api/routes/index'),
-routes     =require('./app_server/routes/index'),
-app        =express();
+path          =require('path'),
+routesApi     =require('./app_api/routes/index'),
+routes        =require('./app_server/routes/index'),
+app           =express();
 
 app.set("views",path.join(__dirname,'app_server','views'));
 app.set("view engine","ejs");
@@ -17,7 +17,7 @@ app.use('/api',routesApi);
 app.use('/',routes);
 
 
+const port=process.env.PORT||3000;
+app.set("port",port);
 
-const port=3000;
-
-app.listen(port,()=>console.log(`server started on port ${port} @ ${Date()}`));
+app.listen(app.get('port'),()=>console.log(`server started on port ${app.get('port')} @ ${Date()}`));
