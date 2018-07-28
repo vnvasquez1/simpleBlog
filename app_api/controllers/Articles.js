@@ -3,7 +3,6 @@ var mongoose =require('mongoose');
 
 mongoose.connect("mongodb://localhost/simpleBlogDB");
 module.exports.postArticle=function(req,res){
-  console.log("req.body",req.body);
   Article
     .create(req.body,function(err,result){
        if(err){
